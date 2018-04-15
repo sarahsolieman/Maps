@@ -1,0 +1,1704 @@
+test = {
+  'name': 'Problem 0',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> square = lambda x: x * x
+          >>> is_odd = lambda x: x % 2 == 1
+          >>> map_and_filter([1, 2, 3, 4, 5], square, is_odd)
+          [1, 9, 25]
+          >>> map_and_filter(['hi', 'hello', 'hey', 'world'],
+          ...                lambda x: x[4], lambda x: len(x) > 4)
+          ['o', 'd']
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> min([-2, -1, 0, 1, 2], key=lambda x: x*x)
+          0
+          >>> min([[0, 3], [1, 2], [2, 1]], key=lambda x: x[1])
+          [2, 1]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> key_of_min_value({1: 6, 2: 5, 3: 4})
+          3
+          >>> key_of_min_value({'a': 6, 'b': 5, 'c': 4})
+          'c'
+          >>> key_of_min_value({'hello': 'world', 'hi': 'there'})
+          'hi'
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> enumerate([6, 'one', 'a'], 3)[1]
+          [4, 'one']
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> from utils import *
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'answer': 'zip(xs, ys)',
+          'choices': [
+            'xs + ys',
+            '(xs, ys)',
+            'zip([xs, ys])',
+            'zip(xs, ys)'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          Consider the lists xs = [6, 1, 4] and ys = [2, 6, 2]. Which
+          of the choices below for EXPR would produce the following
+          output?
+          
+          >>> for x, y in EXPR:
+          ...     print(x + y)
+          8
+          7
+          6
+          """
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 1',
+  'points': 1,
+  'suites': [
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> # Remember that the mean should return a decimal value
+          >>> # If any line causes an error, write AssertionError
+          >>> mean([0])
+          0.0
+          >>> mean([1, 2, 3, 4, 5])
+          3.0
+          >>> mean([3, 1, -2, 7])
+          2.25
+          >>> mean([1] * 100000)
+          1.0
+          >>> mean([2, 4, 6, 8] * 1000000)
+          5.0
+          >>> mean([])
+          AssertionError
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> from utils import mean
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 2',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> soda_reviews = [make_review('Soda', 4.5),
+          ...                 make_review('Soda', 4)]
+          >>> soda = make_restaurant('Soda', [127.0, 0.1],
+          ...                        ['Restaurants', 'Breakfast & Brunch'],
+          ...                        1, soda_reviews)
+          >>> restaurant_name(soda)
+          'Soda'
+          >>> restaurant_location(soda)
+          [127.0, 0.1]
+          >>> restaurant_categories(soda)
+          ['Restaurants', 'Breakfast & Brunch']
+          >>> restaurant_price(soda)
+          1
+          >>> restaurant_ratings(soda)
+          [4.5, 4]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> from abstractions import *
+      >>> import abstractions
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> test.swap_implementations(abstractions, rest=False)
+          >>> make_review = abstractions.make_review
+          >>> soda_reviews = [make_review('Soda', 4.5),
+          ...                 make_review('Soda', 4)]
+          >>> soda = make_restaurant('Soda', [127.0, 0.1],
+          ...                        ['Restaurants', 'Breakfast & Brunch'],
+          ...                        1, soda_reviews)
+          >>> restaurant_name(soda)
+          'Soda'
+          >>> restaurant_location(soda)
+          [127.0, 0.1]
+          >>> restaurant_categories(soda)
+          ['Restaurants', 'Breakfast & Brunch']
+          >>> restaurant_price(soda)
+          1
+          >>> restaurant_ratings(soda)
+          [4.5, 4]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> from abstractions import *
+      >>> import abstractions
+      >>> import tests.test_functions as test
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(abstractions)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 3',
+  'points': 1,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': 'pair; e.g. [1, 1]',
+          'choices': [
+            'number; e.g. 1',
+            "restaurant; e.g. make_restaurant('A', [1, 1], ['Food'], 1, [])",
+            'pair; e.g. [1, 1]',
+            "string of a pair; e.g. '[1, 1]'"
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          Which of the following types of values can be passed as
+          an argument to distance?
+          """
+        },
+        {
+          'answer': 'lambda x: abs(x[0] - x[1])',
+          'choices': [
+            'lambda x, y: pow(-x, y)',
+            'lambda x, y: abs(x - y)',
+            'lambda x: abs(x[0] - x[1])',
+            'sum'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          Consider the list l = [[4, 1], [-3, 2], [5, 0]]. Which of
+          the choices below for fn would make min(l, key=fn) evaluate
+          to [4, 1]?
+          """
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> distance([0, 0], [3, 4]) # should be a decimal
+          5.0
+          >>> distance([6, 1], [6, 1]) # should be a decimal
+          0.0
+          >>> distance([-2, 7], [-3.5, 9]) # should be a decimal
+          2.5
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> find_closest([6, 1],
+          ...              [[1, 5], [3, 3]])
+          [3, 3]
+          >>> find_closest([1, 6],
+          ...              [[1, 5], [3, 3]])
+          [1, 5]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> find_closest([0, 0],
+          ...              [[-2, 0], [2, 0]])
+          [-2, 0]
+          >>> find_closest([0, 0],
+          ...              [[1000, 1000]])
+          [1000, 1000]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Be sure to use the distance function!
+          >>> find_closest([0, 0],
+          ...              [[2, 2], [0, 3]])
+          [2, 2]
+          >>> find_closest([0, 0],
+          ...              [[5, 5], [2, 7]])
+          [5, 5]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> find_closest([0, 0],
+          ...              [[1, 0], [0, 1], [-1, 0], [0, -1]])
+          [1, 0]
+          >>> find_closest([0, 0],
+          ...              [[0, 1], [1, 0], [0, -1], [-1, 0]])
+          [0, 1]
+          >>> find_closest([0, 0],
+          ...              [[1, 1], [2, 2], [3, 3]])
+          [1, 1]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> from recommend import *
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 4',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': '[5, -1]',
+          'choices': [
+            '[-1, 1]',
+            '[5, -1]',
+            '[1, 10]',
+            '[-1, -10]'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          If centroids is [[-1, 1], [5, -1], [1, 10], [-1, -10]],
+          to which centroid will [6, 0] be associated?
+          """
+        },
+        {
+          'answer': '[1, 1]',
+          'choices': [
+            '[-1, 1]',
+            '[1, 1]',
+            '[-1, -1]',
+            '[1, -1]'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          If centroids is [[1, 1], [1, -1], [-1, 1], [-1, -1]],
+          to which centroid will [0, 0] be associated?
+          """
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [-10, 2], [], 2, [
+          ...         make_review('A', 4),
+          ...      ])
+          >>> r2 = make_restaurant('B', [-9, 1], [], 3, [
+          ...         make_review('B', 5),
+          ...         make_review('B', 3.5),
+          ...      ])
+          >>> c1 = [0, 0]
+          >>> groups = group_by_centroid([r1, r2], [c1])
+          >>> test.deep_check_same_elements(groups, [[r1, r2]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [-10, 2], [], 2, [
+          ...         make_review('A', 4),
+          ...      ])
+          >>> r2 = make_restaurant('B', [-9, 1], [], 3, [
+          ...         make_review('B', 5),
+          ...         make_review('B', 3.5),
+          ...      ])
+          >>> r3 = make_restaurant('C', [4, 2], [], 1, [
+          ...         make_review('C', 5)
+          ...      ])
+          >>> c1 = [0, 0]
+          >>> c2 = [3, 4]
+          >>> groups = group_by_centroid([r1, r2, r3], [c1, c2])
+          >>> test.deep_check_same_elements(groups, [[r1, r2], [r3]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [-10, 2], [], 2, [
+          ...         make_review('A', 4),
+          ...      ])
+          >>> r2 = make_restaurant('B', [-9, 1], [], 3, [
+          ...         make_review('B', 5),
+          ...         make_review('B', 3.5),
+          ...      ])
+          >>> r3 = make_restaurant('C', [4, 2], [], 1, [
+          ...         make_review('C', 5)
+          ...      ])
+          >>> r4 = make_restaurant('D', [-2, 6], [], 4, [
+          ...         make_review('D', 2)
+          ...      ])
+          >>> r5 = make_restaurant('E', [4, 2], [], 3.5, [
+          ...         make_review('E', 2.5),
+          ...         make_review('E', 3),
+          ...      ])
+          >>> c1 = [0, 0]
+          >>> c2 = [3, 4]
+          >>> groups = group_by_centroid([r1, r2, r3, r4, r5], [c1, c2])
+          >>> test.deep_check_same_elements(groups, [[r1, r2], [r3, r4, r5]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r = make_restaurant('Zero', [0, 0], [], 1, [
+          ...         make_review('Zero', 5)
+          ...     ])
+          >>> groups = group_by_centroid(
+          ...     [r], [[x, y] for x in [1, -1] for y in [1, -1]]
+          ... )
+          >>> test.deep_check_same_elements(groups, [[r]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [1, 0], [], 1, [
+          ...          make_review('A', 5)
+          ...      ])
+          >>> r2 = make_restaurant('B', [2, 0], [], 1, [
+          ...          make_review('B', 5)
+          ...      ])
+          >>> r3 = make_restaurant('C', [3, 0], [], 1, [
+          ...          make_review('C', 5)
+          ...      ])
+          >>> c1, c2, c3 = [[i, 1] for i in range(1, 4)]
+          >>> groups = group_by_centroid([r1, r2, r3], [c1, c2, c3])
+          >>> test.deep_check_same_elements(groups, [[r1], [r2], [r3]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> from recommend import *
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [-10, 2], [], 2, [
+          ...         make_review('A', 4),
+          ...      ])
+          >>> r2 = make_restaurant('B', [-9, 1], [], 3, [
+          ...         make_review('B', 5),
+          ...         make_review('B', 3.5),
+          ...      ])
+          >>> c1 = [0, 0]
+          >>> groups = group_by_centroid([r1, r2], [c1])
+          >>> test.deep_check_same_elements(groups, [[r1, r2]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [-10, 2], [], 2, [
+          ...         make_review('A', 4),
+          ...      ])
+          >>> r2 = make_restaurant('B', [-9, 1], [], 3, [
+          ...         make_review('B', 5),
+          ...         make_review('B', 3.5),
+          ...      ])
+          >>> r3 = make_restaurant('C', [4, 2], [], 1, [
+          ...         make_review('C', 5)
+          ...      ])
+          >>> c1 = [0, 0]
+          >>> c2 = [3, 4]
+          >>> groups = group_by_centroid([r1, r2, r3], [c1, c2])
+          >>> test.deep_check_same_elements(groups, [[r1, r2], [r3]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [-10, 2], [], 2, [
+          ...         make_review('A', 4),
+          ...      ])
+          >>> r2 = make_restaurant('B', [-9, 1], [], 3, [
+          ...         make_review('B', 5),
+          ...         make_review('B', 3.5),
+          ...      ])
+          >>> r3 = make_restaurant('C', [4, 2], [], 1, [
+          ...         make_review('C', 5)
+          ...      ])
+          >>> r4 = make_restaurant('D', [-2, 6], [], 4, [
+          ...         make_review('D', 2)
+          ...      ])
+          >>> r5 = make_restaurant('E', [4, 2], [], 3.5, [
+          ...         make_review('E', 2.5),
+          ...         make_review('E', 3),
+          ...      ])
+          >>> c1 = [0, 0]
+          >>> c2 = [3, 4]
+          >>> groups = group_by_centroid([r1, r2, r3, r4, r5], [c1, c2])
+          >>> test.deep_check_same_elements(groups, [[r1, r2], [r3, r4, r5]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r = make_restaurant('Zero', [0, 0], [], 1, [
+          ...         make_review('Zero', 5),
+          ...     ])
+          >>> groups = group_by_centroid(
+          ...     [r], [[x, y] for x in [1, -1] for y in [1, -1]]
+          ... )
+          >>> test.deep_check_same_elements(groups, [[r]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> r1 = make_restaurant('A', [1, 0], [], 1, [
+          ...          make_review('A', 5)
+          ...      ])
+          >>> r2 = make_restaurant('B', [2, 0], [], 1, [
+          ...          make_review('B', 5)
+          ...      ])
+          >>> r3 = make_restaurant('C', [3, 0], [], 1, [
+          ...          make_review('C', 5)
+          ...      ])
+          >>> c1, c2, c3 = [[i, 1] for i in range(1, 4)]
+          >>> groups = group_by_centroid([r1, r2, r3], [c1, c2, c3])
+          >>> test.deep_check_same_elements(groups, [[r1], [r2], [r3]])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> test.swap_implementations(recommend)
+      >>> make_user, make_review, make_restaurant = recommend.make_user, recommend.make_review, recommend.make_restaurant
+      >>> distance = recommend.distance
+      >>> find_closest, group_by_centroid = recommend.find_closest, recommend.group_by_centroid
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 5',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> cluster1 = [
+          ...     make_restaurant('A', [-3, -4], [], 3, [make_review('A', 2)]),
+          ...     make_restaurant('B', [1, -1],  [], 1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [2, -4],  [], 1, [make_review('C', 5)]),
+          ... ]
+          >>> find_centroid(cluster1) # should be a pair of decimals
+          [0.0, -3.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> cluster1 = [
+          ...     make_restaurant('A', [0, 0],     [], 3, [make_review('A', 2)]),
+          ...     make_restaurant('B', [1, 1],     [], 1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [101, 101], [], 1, [make_review('C', 5)]),
+          ... ]
+          >>> find_centroid(cluster1) # should be a pair of decimals
+          [34.0, 34.0]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> from recommend import *
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> cluster1 = [
+          ...     make_restaurant('A', [-3, -4], [], 3, [make_review('A', 2)]),
+          ...     make_restaurant('B', [1, -1],  [], 1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [2, -4],  [], 1, [make_review('C', 5)]),
+          ... ]
+          >>> find_centroid(cluster1) # should be a pair of decimals
+          [0.0, -3.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> cluster1 = [
+          ...     make_restaurant('A', [0, 0],     [], 3, [make_review('A', 2)]),
+          ...     make_restaurant('B', [1, 1],     [], 1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [101, 101], [], 1, [make_review('C', 5)]),
+          ... ]
+          >>> find_centroid(cluster1) # should be a pair of decimals
+          [34.0, 34.0]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import recommend
+      >>> import tests.test_functions as test
+      >>> test.swap_implementations(recommend) # don't violate abstraction!
+      >>> from recommend import *
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 6',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': 'Grouping the restaurants into k clusters by location.',
+          'choices': [
+            'Grouping the restaurants into k clusters by location.',
+            'Finding the mean rating of restaurants for k categories.',
+            'Predicting the ratings for k restaurants.'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'What are we using the k-means algorithm to achieve?'
+        },
+        {
+          'answer': 'Randomly initialize k centroids.',
+          'choices': [
+            'Randomly initialize k centroids.',
+            r"""
+            Create a cluster for each centroid consisting of all elements closest to
+            that centroid.
+            """,
+            'Find the centroid (average position) of each cluster.'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'What is the first step of the k-means algorithm?'
+        },
+        {
+          'answer': 'Create a cluster for each centroid consisting of all elements closest to that centroid.',
+          'choices': [
+            'Randomly reassign centroids.',
+            'Group restaurants by latitude.',
+            r"""
+            Create a cluster for each centroid consisting of all elements closest to
+            that centroid.
+            """,
+            'Find the centroid (average position) of each cluster.'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          After we randomly initialize k centroids, what is the first step
+          of the iterative portion of the k-means algorithm?
+          """
+        },
+        {
+          'answer': 'Find the centroid (average position) of each cluster.',
+          'choices': [
+            'Randomly reassign centroids.',
+            'Group restaurants by latitude.',
+            r"""
+            Create a cluster for each centroid consisting of all elements closest to
+            that centroid.
+            """,
+            'Find the centroid (average position) of each cluster.'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          What is the second step of the iterative portion of the k-means
+          algorithm?
+          """
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> restaurants1 = [
+          ...     make_restaurant('A', [-3, -4], [], 3, [make_review('A', 2)]),
+          ...     make_restaurant('B', [1, -1],  [], 1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [2, -4],  [], 1, [make_review('C', 5)]),
+          ... ]
+          >>> centroids = k_means(restaurants1, 1)
+          >>> centroids # should be 2-element lists of decimals
+          [[0.0, -3.0]]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> restaurants2 = [
+          ...     make_restaurant('D', [2, 3], [], 2, [make_review('D', 2)]),
+          ...     make_restaurant('E', [0, 3], [], 3, [make_review('E', 1)]),
+          ... ]
+          >>> centroids = k_means(restaurants2, 1)
+          >>> centroids # should be 2-element lists of decimals
+          [[1.0, 3.0]]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> restaurants1 = [
+          ...     make_restaurant('A', [-3, -4], [], 3, [make_review('A', 2)]),
+          ...     make_restaurant('B', [1, -1], [],  1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [2, -4], [],  1, [make_review('C', 5)]),
+          ... ]
+          >>> centroids = k_means(restaurants1, 2)
+          >>> centroids # should be 2-element lists of decimals
+          [[-3.0, -4.0], [1.5, -2.5]]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> cluster1 = [
+          ...     make_restaurant('A', [-3, -4], [], 3, [make_review('A', 2)]),
+          ... ]
+          >>> cluster2 = [
+          ...     make_restaurant('B', [1, -1], [], 1, [make_review('B', 1)]),
+          ...     make_restaurant('C', [2, -4], [], 1, [make_review('C', 5)]),
+          ...     make_restaurant('D', [2, 3],  [], 2, [make_review('D', 2)]),
+          ...     make_restaurant('E', [0, 3],  [], 3, [make_review('E', 1)]),
+          ...     make_restaurant('F', [-1, 0], [], 3, [make_review('F', 1)]),
+          ...     make_restaurant('G', [4, 2],  [], 3, [make_review('E', 1)]),
+          ... ]
+          >>> restaurants = cluster1 + cluster2
+          >>> centroids = k_means(restaurants, 2)
+          >>> [[round(x, 5), round(y, 5)] for x, y in centroids]
+          [[-3.0, -4.0], [1.33333, 0.5]]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> old_sample = recommend.sample
+      >>> test.swap_implementations(recommend)
+      >>> recommend.sample = test.sample # deterministic sampling
+      >>> make_review, make_restaurant = recommend.make_review, recommend.make_restaurant
+      >>> k_means = recommend.k_means
+      """,
+      'teardown': r"""
+      >>> recommend.sample = old_sample
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 7',
+  'points': 3,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': 'takes in a restaurant and returns the predicted rating for that restaurant',
+          'choices': [
+            r"""
+            takes in a restaurant and returns the predicted rating for that
+            restaurant
+            """,
+            r"""
+            takes in a restaurant and returns the predicted location of
+            that restaurant
+            """,
+            'returns the r_squared value'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          What does a predictor function returned by
+          find_predictor do?
+          """
+        },
+        {
+          'answer': 'the extracted feature value for each restaurant in restaurants',
+          'choices': [
+            'the restaurants in restaurants',
+            'the names of restaurants in restaurants',
+            'the extracted feature value for each restaurant in restaurants',
+            'the restaurants reviewed by user'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'What does the list xs represent?'
+        },
+        {
+          'answer': "user's ratings for the restaurants in restaurants",
+          'choices': [
+            'the average rating for the restaurants in restaurants',
+            "user's ratings for the restaurants in restaurants",
+            'the names for the restaurants reviewed by user',
+            'the names for the restaurants in restaurants'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'What does the list ys represent?'
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> user = make_user('John D.', [
+          ...     make_review('A', 1),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 2.5),
+          ... ])
+          >>> restaurant = make_restaurant('New', [-10, 2], [], 2, [
+          ...         make_review('New', 4),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('B', [4, 2], [], 1, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 2)
+          ...     ]),
+          ...     make_restaurant('D', [4, 2], [], 3.5, [
+          ...         make_review('D', 2.5),
+          ...         make_review('D', 3),
+          ...     ]),
+          ... ]
+          >>> pred, r_squared = find_predictor(user, cluster, restaurant_price)
+          >>> round(pred(restaurant), 5)
+          4.0
+          >>> round(r_squared, 5)
+          1.0
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('John D.', [
+          ...     make_review('A', 1),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 2.5),
+          ... ])
+          >>> restaurant = make_restaurant('New', [-10, 2], [], 2, [
+          ...         make_review('New', 4),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('B', [4, 2], [], 1, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 2)
+          ...     ]),
+          ...     make_restaurant('D', [4, 2], [], 3.5, [
+          ...         make_review('D', 2.5),
+          ...         make_review('D', 3),
+          ...     ]),
+          ... ]
+          >>> pred, r_squared = find_predictor(user, cluster, lambda r: mean(restaurant_ratings(r)))
+          >>> round(pred(restaurant), 5)
+          3.9359
+          >>> round(r_squared, 5)
+          0.99256
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('John D.', [
+          ...     make_review('A', 1),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 2.5),
+          ... ])
+          >>> restaurant = make_restaurant('New', [-10, 2], [], 2, [
+          ...         make_review('New', 4),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('B', [4, 2], [], 1, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 2)
+          ...     ]),
+          ...     make_restaurant('D', [4, 2], [], 3.5, [
+          ...         make_review('D', 2.5),
+          ...         make_review('D', 3),
+          ...     ]),
+          ... ]
+          >>> pred, r_squared = find_predictor(user, cluster, lambda r: len(restaurant_ratings(r)))
+          >>> round(pred(restaurant), 5)
+          3.5
+          >>> round(r_squared, 5)
+          0.12903
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> test.swap_implementations(recommend)
+      >>> from recommend import *
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 8',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': 'a list of restaurants reviewed by the user',
+          'choices': [
+            'a list of restaurants reviewed by the user',
+            'a list of all possible restaurants',
+            'a list of ratings for restaurants reviewed by the user'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'In best_predictor, what does the variable reviewed represent?'
+        },
+        {
+          'answer': 'a predictor function and its r_squared value',
+          'choices': [
+            'a predictor function and its r_squared value',
+            'a predictor function',
+            'an r_squared value',
+            'a restaurant'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          Given a user, a list of restaurants, and a feature function, what
+          does find_predictor from Problem 7 return?
+          """
+        },
+        {
+          'answer': 'the predictor with the highest r_squared value',
+          'choices': [
+            'the predictor with the highest r_squared value',
+            'the predictor with the lowest r_squared value',
+            'the first predictor in the list',
+            'an arbitrary predictor'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          After computing a list of [predictor, r_squared] pairs,
+          which predictor should we select?
+          """
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ...     make_restaurant('D', [4, 2], [], 2, [
+          ...         make_review('D', 3),
+          ...         make_review('D', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [restaurant_price, lambda r: mean(restaurant_ratings(r))]
+          >>> pred = best_predictor(user, cluster, fns)
+          >>> [round(pred(r), 5) for r in cluster] # should be a list of decimals
+          [2.0, 5.0, 2.0, 5.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [restaurant_price, lambda r: mean(restaurant_ratings(r))]
+          >>> pred = best_predictor(user, cluster, fns)
+          >>> [round(pred(r), 5) for r in cluster]
+          [2.0, 5.0, 2.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [lambda r: mean(restaurant_ratings(r)), restaurant_price]
+          >>> pred = best_predictor(user, cluster, fns)
+          >>> [round(pred(r), 5) for r in cluster] # Make sure you're iterating through feature_fns!
+          [2.0, 5.0, 2.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ...     make_restaurant('E', [1, 2], [], 4, [
+          ...         make_review('E', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [lambda r: mean(restaurant_ratings(r)), restaurant_price]
+          >>> pred = best_predictor(user, cluster, fns) # Make sure you're only using user-reviewed restaurants!
+          >>> [round(pred(r), 5) for r in cluster]
+          [2.0, 5.0, 2.0, 2.0]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> from recommend import *
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ...     make_restaurant('D', [4, 2], [], 2, [
+          ...         make_review('D', 3),
+          ...         make_review('D', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [restaurant_price, lambda r: mean(restaurant_ratings(r))]
+          >>> pred = best_predictor(user, cluster, fns)
+          >>> # Hint: Price is a perfect predictor of this user's ratings,
+          >>> #       so the predicted ratings should equal the user's ratings
+          >>> [round(pred(r), 5) for r in cluster] # should be a list of decimals
+          [2.0, 5.0, 2.0, 5.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [restaurant_price, lambda r: mean(restaurant_ratings(r))]
+          >>> pred = best_predictor(user, cluster, fns)
+          >>> [round(pred(r), 5) for r in cluster]
+          [2.0, 5.0, 2.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [lambda r: mean(restaurant_ratings(r)), restaurant_price]
+          >>> pred = best_predictor(user, cluster, fns)
+          >>> [round(pred(r), 5) for r in cluster] # Make sure you're iterating through feature_fns!
+          [2.0, 5.0, 2.0]
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> user = make_user('Cheapskate', [
+          ...     make_review('A', 2),
+          ...     make_review('B', 5),
+          ...     make_review('C', 2),
+          ...     make_review('D', 5),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [5, 2], [], 4, [
+          ...         make_review('A', 5)
+          ...     ]),
+          ...     make_restaurant('B', [3, 2], [], 2, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 4)
+          ...     ]),
+          ...     make_restaurant('E', [1, 2], [], 4, [
+          ...         make_review('E', 4)
+          ...     ]),
+          ... ]
+          >>> fns = [lambda r: mean(restaurant_ratings(r)), restaurant_price]
+          >>> pred = best_predictor(user, cluster, fns) # Make sure you're only using user-reviewed restaurants!
+          >>> [round(pred(r), 5) for r in cluster]
+          [2.0, 5.0, 2.0, 2.0]
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> test.swap_implementations(recommend)
+      >>> from recommend import *
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 9',
+  'points': 2,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': 'restaurant names',
+          'choices': [
+            'restaurant names',
+            'restaurants',
+            'restaurant ratings'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'rate_all returns a dictionary. What are the keys of this dictionary?'
+        },
+        {
+          'answer': 'numbers - a mix of user ratings and predicted ratings',
+          'choices': [
+            'numbers - a mix of user ratings and predicted ratings',
+            'numbers - user ratings only',
+            'numbers - predicted ratings only',
+            'numbers - mean restaurant ratings',
+            'lists - list of all restaurant ratings'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'What are the values of the returned dictionary?'
+        },
+        {
+          'answer': 'a list of restaurants reviewed by the user',
+          'choices': [
+            'a list of restaurants reviewed by the user',
+            'a list of all possible restaurants',
+            'a list of ratings for restaurants reviewed by the user'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'In rate_all, what does the variable reviewed represent?'
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> user = make_user('Mr. Mean Rating Minus One', [
+          ...     make_review('A', 3),
+          ...     make_review('B', 4),
+          ...     make_review('C', 1),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [1, 2], [], 4, [
+          ...         make_review('A', 4),
+          ...         make_review('A', 4)
+          ...     ]),
+          ...     make_restaurant('B', [4, 2], [], 3, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 2)
+          ...     ]),
+          ...     make_restaurant('D', [4, 4], [], 3.5, [
+          ...         make_review('D', 2.5),
+          ...         make_review('D', 3.5),
+          ...     ]),
+          ... ]
+          >>> restaurants = {restaurant_name(r): r for r in cluster}
+          >>> recommend.ALL_RESTAURANTS = cluster
+          >>> to_rate = cluster[2:]
+          >>> fns = [restaurant_price, lambda r: mean(restaurant_ratings(r))]
+          >>> ratings = rate_all(user, to_rate, fns)
+          >>> type(ratings)
+          <class 'dict'>
+          >>> len(ratings) # Only the restaurants passed to rate_all
+          2
+          >>> ratings['C'] # A restaurant rated by the user (should be an integer)
+          1
+          >>> round(ratings['D'], 5) # A predicted rating (should be a decimal)
+          2.0
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> from recommend import *
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> user = make_user('Mr. Mean Rating Minus One', [
+          ...     make_review('A', 3),
+          ...     make_review('B', 4),
+          ...     make_review('C', 1),
+          ... ])
+          >>> cluster = [
+          ...     make_restaurant('A', [1, 2], [], 4, [
+          ...         make_review('A', 4),
+          ...         make_review('A', 4)
+          ...     ]),
+          ...     make_restaurant('B', [4, 2], [], 3, [
+          ...         make_review('B', 5)
+          ...     ]),
+          ...     make_restaurant('C', [-2, 6], [], 4, [
+          ...         make_review('C', 2)
+          ...     ]),
+          ...     make_restaurant('D', [4, 4], [], 3.5, [
+          ...         make_review('D', 2.5),
+          ...         make_review('D', 3.5),
+          ...     ]),
+          ... ]
+          >>> recommend.ALL_RESTAURANTS = cluster
+          >>> to_rate = cluster[2:]
+          >>> fns = [restaurant_price, lambda r: mean(restaurant_ratings(r))]
+          >>> ratings = rate_all(user, to_rate, fns)
+          >>> type(ratings)
+          <class 'dict'>
+          >>> len(ratings) # Only the restaurants passed to rate_all
+          2
+          >>> ratings['C'] # A restaurant rated by the user (should be an integer)
+          1
+          >>> round(ratings['D'], 5) # A predicted rating (should be a decimal)
+          2.0
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> test.swap_implementations(recommend)
+      >>> from recommend import *
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+test = {
+  'name': 'Problem 10',
+  'points': 1,
+  'suites': [
+    {
+      'cases': [
+        {
+          'answer': 'a list of strings (categories)',
+          'choices': [
+            'a list of strings (categories)',
+            'a single string (category)',
+            'a single number (rating)',
+            'a list of numbers (ratings)'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': r"""
+          Given a restaurant, what does restaurant_categories in
+          abstractions.py return?
+          """
+        },
+        {
+          'answer': "if the query string is one of the restaurant's categories",
+          'choices': [
+            "if the query string is a substring of the restaurant's name",
+            "if the query string is mentioned in the restaurant's reviews",
+            "if the query string is one of the restaurant's categories",
+            "if the query string is equal to the restaurant's categories"
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'When does a restaurant match a search query?'
+        },
+        {
+          'answer': 'a list of restaurants',
+          'choices': [
+            'a list of restaurants',
+            'a list of restaurant names (strings)',
+            'a dictionary that maps restaurant names (strings) to restaurants',
+            'a dictionary that maps restaurant categories (strings) to restaurants'
+          ],
+          'hidden': False,
+          'locked': False,
+          'question': 'What type of object does search return?'
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> def make_testaurant(name, categories):
+          ...     return make_restaurant(name, [0, 0], categories, 1, [
+          ...         make_review(name, 5)
+          ...     ])
+          >>> a = make_testaurant('A', ['Creperies', 'Italian'])
+          >>> b = make_testaurant('B', ['Italian', 'Coffee & Tea'])
+          >>> c = make_testaurant('C', ['Coffee & Tea', 'Greek', 'Creperies'])
+          >>> d = make_testaurant('D', ['Greek'])
+          >>> test.check_same_elements(search('Creperies', [a, b, c, d]), [a, c])
+          True
+          >>> test.check_same_elements(search('Thai', [a, b, c, d]), [])
+          True
+          >>> test.check_same_elements(search('Coffee & Tea', [a, b, d]), [b])
+          True
+          >>> test.check_same_elements(search('Greek', [a, b, c, d]), [c, d])
+          True
+          >>> test.check_same_elements(search('Italian', [a, b, c, d]), [a, b])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> make_user, make_review, make_restaurant = recommend.make_user, recommend.make_review, recommend.make_restaurant
+      >>> search = recommend.search
+      """,
+      'teardown': '',
+      'type': 'doctest'
+    },
+    {
+      'cases': [
+        {
+          'code': r"""
+          >>> def make_testaurant(name, categories):
+          ...     return make_restaurant(name, [0, 0], categories, 1, [
+          ...         make_review(name, 5)
+          ...     ])
+          >>> a = make_testaurant('A', ['Creperies', 'Italian'])
+          >>> b = make_testaurant('B', ['Italian', 'Coffee & Tea'])
+          >>> c = make_testaurant('C', ['Coffee & Tea', 'Greek', 'Creperies'])
+          >>> d = make_testaurant('D', ['Greek'])
+          >>> test.check_same_elements(search('Creperies', [a, b, c, d]), [a, c])
+          True
+          >>> test.check_same_elements(search('Thai', [a, b, c, d]), [])
+          True
+          >>> test.check_same_elements(search('Coffee & Tea', [a, b, d]), [b])
+          True
+          >>> test.check_same_elements(search('Greek', [a, b, c, d]), [c, d])
+          True
+          >>> test.check_same_elements(search('Italian', [a, b, c, d]), [a, b])
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        }
+      ],
+      'scored': True,
+      'setup': r"""
+      >>> import tests.test_functions as test
+      >>> import recommend
+      >>> test.swap_implementations(recommend)
+      >>> make_user, make_review, make_restaurant = recommend.make_user, recommend.make_review, recommend.make_restaurant
+      >>> search = recommend.search
+      """,
+      'teardown': r"""
+      >>> test.restore_implementations(recommend)
+      """,
+      'type': 'doctest'
+    }
+  ]
+}
+"""Infrastructure for detecting abstraction barrier violations."""
+
+class AbstractionViolation(Exception):
+    pass
+
+def datatype(obj):
+    return type(obj).__name__
+
+# Generic abstract data type
+class Abstract(object):
+    def __add__(self, other):
+        raise AbstractionViolation("Can't add {} object to {}".format(datatype(self), datatype(other)))
+
+    def __radd__(self, other):
+        raise AbstractionViolation("Can't add {} object to {}".format(datatype(self), datatype(other)))
+
+    def __eq__(self, other):
+        if isinstance(other, type(self)):
+            return other is self
+        raise AbstractionViolation("Can't use == on {} object and {}".format(datatype(self), datatype(other)))
+
+    def __ne__(self, other):
+        if isinstance(other, type(self)):
+            return other is not self
+        raise AbstractionViolation("Can't use != on {} object and {}".format(datatype(self), datatype(other)))
+
+    def __bool__(self):
+        raise AbstractionViolation("Can't use {} object as a boolean".format(datatype(self)))
+
+    def __getitem__(self, index):
+        raise AbstractionViolation("Can't use [] notation on {} object".format(datatype(self)))
+
+    def __contains__(self, other):
+        raise AbstractionViolation("Can't use contains notation on {} object".format(datatype(self)))
+
+    def __delitem__(self, other):
+        raise AbstractionViolation("Can't use del notation on {} object".format(datatype(self)))
+
+    def __iter__(self):
+        raise AbstractionViolation("Can't iterate on {} object".format(datatype(self)))
+
+    def __len__(self):
+        raise AbstractionViolation("Can't use len notation on {} object".format(datatype(self)))
+
+    def __setitem__(self, key, item):
+        raise AbstractionViolation("Can't use setitem notation on {} object".format(datatype(self)))
+
+    def __call__(self, *args, **kwargs):
+        raise AbstractionViolation("Can't call {} object".format(datatype(self)))
+
+    def __hash__(self):
+        return id(self)
+
+class User(Abstract):
+    def __init__(self, name, reviews):
+        self.a, self.b = name, {review_restaurant_name(r): r for r in reviews}
+    def __repr__(self):
+        return '<User {} {}>'.format(self.a, list(map(repr, self.b)))
+
+make_user = User
+user_name = lambda u: u.a
+user_reviews = lambda u: u.b
+user_reviewed_restaurants = lambda u, r: [r_ for r_ in r if restaurant_name(r_) in user_reviews(u)]
+user_rating = lambda u, n: review_rating(user_reviews(u)[n])
+
+class Review(Abstract):
+    def __init__(self, restaurant_name, rating):
+        self.a, self.b = restaurant_name, rating
+    def __repr__(self):
+        return '<Review {} {}>'.format(self.a, self.b)
+
+make_review = Review
+review_restaurant_name = lambda r: r.a
+review_rating = lambda r: r.b
+
+class Restaurant(Abstract):
+    def __init__(self, name, location, categories, price, reviews):
+        self.a, self.b, self.c, self.d, self.e = name, location, categories, price, reviews
+        self.f = [review_rating(r) for r in reviews]
+        self.g = len(self.e)
+        self.h = sum(review_rating(r) for r in self.e) / len(self.e)
+    def __repr__(self):
+        return '<Restaurant {}>'.format(self.a)
+
+make_restaurant = Restaurant
+restaurant_name = lambda r: r.a
+restaurant_location = lambda r: r.b
+restaurant_categories = lambda r: r.c
+restaurant_price = lambda r: r.d
+restaurant_ratings = lambda r: r.f
+
+old = {}
+def swap_implementations(impl, user=True, review=True, rest=True):
+    # save other implementations
+    old['user'] = impl.make_user, impl.user_name, impl.user_reviews, impl.user_reviewed_restaurants, impl.user_rating
+    old['review'] = impl.make_review, impl.review_restaurant_name, impl.review_rating
+    old['rest'] = impl.make_restaurant, impl.restaurant_name, impl.restaurant_location, impl.restaurant_categories, impl.restaurant_price, impl.restaurant_ratings
+
+    # save our implementations
+    new_user = make_user, user_name, user_reviews, user_reviewed_restaurants, user_rating
+    new_review = make_review, review_restaurant_name, review_rating
+    new_rest = make_restaurant, restaurant_name, restaurant_location, restaurant_categories, restaurant_price, restaurant_ratings
+
+    # replace impl's implementations with ours
+    if user:
+        impl.make_user, impl.user_name, impl.user_reviews, impl.user_reviewed_restaurants, impl.user_rating = new_user
+    if review:
+        impl.make_review, impl.review_restaurant_name, impl.review_rating = new_review
+    if rest:
+        impl.make_restaurant, impl.restaurant_name, impl.restaurant_location, impl.restaurant_categories, impl.restaurant_price, impl.restaurant_ratings = new_rest
+
+def restore_implementations(impl):
+    impl.make_user, impl.user_name, impl.user_reviews, impl.user_reviewed_restaurants, impl.user_rating = old['user']
+    impl.make_review, impl.review_restaurant_name, impl.review_rating = old['review']
+    impl.make_restaurant, impl.restaurant_name, impl.restaurant_location, impl.restaurant_categories, impl.restaurant_price, impl.restaurant_ratings = old['rest']
+
+def check_same_elements(cluster1, cluster2):
+    return len(cluster1) == len(cluster2) and all(el1 == el2 for el1, el2 in zip(cluster1, cluster2))
+
+def deep_check_same_elements(clusters1, clusters2):
+    return len(clusters1) == len(clusters2) and all(check_same_elements(c1, c2) for c1, c2 in zip(clusters1, clusters2))
+
+def sample(lst, k):
+    return lst[:k]
